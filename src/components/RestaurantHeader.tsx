@@ -15,7 +15,7 @@ const RestaurantHeader = () => {
         
         {/* Restaurant Info Overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">Everest Indian Restaurant</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-2">Everest Cuisine San Jose</h1>
           <div className="flex flex-wrap items-center gap-4 text-sm md:text-base">
             <div className="flex items-center gap-1">
               <Star className="w-4 h-4 fill-brand-accent text-brand-accent" />

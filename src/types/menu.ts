@@ -6,6 +6,13 @@ export interface MenuItem {
   image: string;
   category: string;
   available: boolean;
+  // Deal-specific properties
+  isPercentageDiscount?: boolean;
+  discountValue?: number;
+  validTime?: string;
+  isDeal?: boolean;
+  dealType?: 'BOGO' | 'FREE_ITEM' | 'FREE_DELIVERY';
+  minimumOrder?: number;
 }
 
 export interface CartItem extends MenuItem {

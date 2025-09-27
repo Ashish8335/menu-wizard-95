@@ -613,11 +613,60 @@ export const menuData: MenuItem[] = [
     image: '/api/placeholder/400/300',
     category: 'Vegetarian',
     available: true
+  },
+
+  // DEALS
+  {
+    id: '67',
+    name: '15% Off 11am to 5pm',
+    description: '15% OFF from 11am to 5pm (On Online Orders Only. Cannot be combined with other offers)',
+    price: 0,
+    image: '/api/placeholder/400/300',
+    category: 'Deals',
+    available: true,
+    isPercentageDiscount: true,
+    discountValue: 15,
+    validTime: '11:00 AM - 5:00 PM'
+  },
+  {
+    id: '68',
+    name: 'Buy 1 Get 1 FREE Yellow Daal Tadka',
+    description: 'Buy One Get One FREE Yellow Daal Tadka. Offer is valid for online orders only.',
+    price: 0,
+    image: '/api/placeholder/400/300',
+    category: 'Deals',
+    available: true,
+    isDeal: true,
+    dealType: 'BOGO'
+  },
+  {
+    id: '69',
+    name: 'Buy Butter Chicken Get Rice FREE',
+    description: 'Buy One Butter Chicken Get One Rice FREE. One offer valid at a time only.',
+    price: 0,
+    image: '/api/placeholder/400/300',
+    category: 'Deals',
+    available: true,
+    isDeal: true,
+    dealType: 'FREE_ITEM'
+  },
+  {
+    id: '70',
+    name: 'Free Delivery on Orders $40+',
+    description: 'Free delivery on orders of $40 or more. Offer valid for online orders only. Not valid for Catering.',
+    price: 0,
+    image: '/api/placeholder/400/300',
+    category: 'Deals',
+    available: true,
+    isDeal: true,
+    dealType: 'FREE_DELIVERY',
+    minimumOrder: 40
   }
 ];
 
 export const categories = [
   'All Items',
+  'Deals',
   'Appetizers', 
   'Soups',
   'Vegetarian',
