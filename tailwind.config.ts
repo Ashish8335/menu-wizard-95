@@ -14,6 +14,15 @@ export default {
     },
     extend: {
       colors: {
+        brand: {
+          primary: "hsl(var(--brand-primary))",
+          "primary-dark": "hsl(var(--brand-primary-dark))", 
+          secondary: "hsl(var(--brand-secondary))",
+          accent: "hsl(var(--brand-accent))",
+        },
+        food: {
+          warm: "hsl(var(--food-warm))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

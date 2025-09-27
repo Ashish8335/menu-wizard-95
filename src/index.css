@@ -2,9 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Everest Restaurant - DoorDash Style Design System
+All colors MUST be HSL format. Modern food delivery app aesthetic.
 */
+
+/* Custom design tokens */
+:root {
+  /* Brand Colors - Vibrant food delivery theme */
+  --brand-primary: 0 84% 60%;           /* Vibrant red */
+  --brand-primary-dark: 0 84% 50%;      /* Darker red */
+  --brand-secondary: 24 95% 53%;        /* Orange accent */
+  --brand-accent: 39 100% 50%;          /* Golden yellow */
+  
+  /* App-specific colors */
+  --food-warm: 16 100% 66%;             /* Warm food orange */
+  --success-green: 142 76% 36%;         /* Success green */
+  --price-color: 220 13% 18%;           /* Price text */
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(var(--brand-primary)), hsl(var(--brand-secondary)));
+  --gradient-warm: linear-gradient(120deg, hsl(var(--food-warm)), hsl(var(--brand-secondary)));
+  --gradient-hero: linear-gradient(135deg, hsl(var(--brand-primary)) 0%, hsl(var(--brand-secondary)) 100%);
+  --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.9), hsl(0 0% 98% / 0.8));
+  
+  /* Shadows & Effects */
+  --shadow-card: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.06);
+  --shadow-button: 0 2px 8px hsl(var(--brand-primary) / 0.25);
+  --shadow-cart: 0 -4px 20px hsl(0 0% 0% / 0.15);
+  --shadow-hover: 0 8px 25px hsl(0 0% 0% / 0.15);
+  
+  /* Animations */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
 
 @layer base {
   :root {
@@ -17,11 +47,11 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: var(--brand-primary);
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: var(--food-warm);
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
