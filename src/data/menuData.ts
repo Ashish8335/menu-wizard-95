@@ -1,4 +1,10 @@
 import { MenuItem } from '@/types/menu';
+import butterChickenImg from '@/assets/butter-chicken.jpg';
+import chickenBiryaniImg from '@/assets/chicken-biryani.jpg';
+import tandooriChickenImg from '@/assets/tandoori-chicken.jpg';
+import palakPaneerImg from '@/assets/palak-paneer.jpg';
+import dalMakhaniImg from '@/assets/dal-makhani.jpg';
+import naanBreadImg from '@/assets/naan-bread.jpg';
 
 export const menuData: MenuItem[] = [
   // APPETIZERS
@@ -245,7 +251,7 @@ export const menuData: MenuItem[] = [
     name: 'Dal Makhani',
     description: 'Slow-cooked black lentils in rich tomato and butter gravy with cream',
     price: 14.99,
-    image: 'https://www.fbgcdn.com/pictures/7d574d42-6561-489c-9b07-a41bdb53ed01_d3.jpg',
+    image: dalMakhaniImg,
     category: 'Vegetarian',
     available: true
   },
@@ -326,7 +332,7 @@ export const menuData: MenuItem[] = [
     name: 'Palak Paneer',
     description: 'Fresh spinach curry with paneer cubes, garlic, and traditional spices',
     price: 15.99,
-    image: 'https://www.fbgcdn.com/pictures/ce7c89cb-04dc-43cc-845a-f0ee39e16364_d3.jpg',
+    image: palakPaneerImg,
     category: 'Vegetarian',
     available: true
   },
@@ -355,7 +361,7 @@ export const menuData: MenuItem[] = [
     name: 'Butter Chicken',
     description: 'Tender chicken in rich, creamy tomato sauce with butter and mild spices',
     price: 18.99,
-    image: 'https://www.fbgcdn.com/pictures/a29d7903-29d6-4124-8efd-c1dde9f8e185_d3.jpg',
+    image: butterChickenImg,
     category: 'Chicken',
     available: true
   },
@@ -460,7 +466,7 @@ export const menuData: MenuItem[] = [
     name: 'Chicken Biryani',
     description: 'Fragrant basmati rice layered with spiced chicken, saffron and fried onions',
     price: 22.99,
-    image: 'https://www.fbgcdn.com/pictures/425d3a12-4d9d-4c58-9026-581b0c9f2bc6_d3.jpg',
+    image: chickenBiryaniImg,
     category: 'Rice & Biryani',
     available: true
   },
@@ -561,7 +567,7 @@ export const menuData: MenuItem[] = [
     name: 'Butter Naan',
     description: 'Classic soft naan bread brushed with butter',
     price: 3.99,
-    image: 'https://www.fbgcdn.com/pictures/778c53e8-5d36-4e3a-9549-116a07c82351_d3.jpg',
+    image: naanBreadImg,
     category: 'Breads',
     available: true
   },
@@ -579,7 +585,7 @@ export const menuData: MenuItem[] = [
     name: 'Tandoori Roti',
     description: 'Whole wheat bread cooked in tandoor oven',
     price: 2.99,
-    image: 'https://www.fbgcdn.com/pictures/da69e36f-1c62-4aad-9864-bf5b08ba9a83_d3.jpg',
+    image: tandooriChickenImg,
     category: 'Breads',
     available: true
   },

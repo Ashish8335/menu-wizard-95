@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, MapPin, Clock, Phone, User, CreditCard } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, Phone, User, CreditCard, Plus, Minus, Trash2 } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 
 const Checkout = () => {
-  const { items, getCartTotal, clearCart } = useCart();
+  const { items, getCartTotal, clearCart, updateQuantity, removeFromCart } = useCart();
   const navigate = useNavigate();
   const { toast } = useToast();
   
@@ -191,12 +191,41 @@ const Checkout = () => {
           <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
           <div className="space-y-3 mb-4">
             {items.map((item) => (
-              <div key={item.id} className="flex justify-between items-center">
+              <div key={item.id} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                 <div className="flex-1">
                   <span className="font-medium">{item.name}</span>
-                  <span className="text-gray-600 ml-2">×{item.quantity}</span>
+                  <div className="text-sm text-gray-600">${item.price.toFixed(2)} each</div>
                 </div>
-                <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                      className="h-8 w-8 p-0"
+                    >
+                      <Minus className="w-3 h-3" />
+                    </Button>
+                    <span className="w-8 text-center font-medium">{item.quantity}</span>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      className="h-8 w-8 p-0"
+                    >
+                      <Plus className="w-3 h-3" />
+                    </Button>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => removeFromCart(item.id)}
+                    className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </Button>
+                  <span className="font-medium w-16 text-right">${(item.price * item.quantity).toFixed(2)}</span>
+                </div>
               </div>
             ))}
           </div>
