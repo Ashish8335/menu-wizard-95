@@ -585,7 +585,7 @@ export const menuData: MenuItem[] = [
     name: 'Tandoori Roti',
     description: 'Whole wheat bread cooked in tandoor oven',
     price: 2.99,
-    image: tandooriChickenImg,
+    image: 'https://www.fbgcdn.com/pictures/da69e36f-1c62-4aad-9864-bf5b08ba9a83_d3.jpg',
     category: 'Breads',
     available: true
   },
