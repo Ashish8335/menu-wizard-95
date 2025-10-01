@@ -6,13 +6,36 @@ interface CategoryTabsProps {
 }
 
 const CategoryTabs = ({ selectedCategory, onCategoryChange }: CategoryTabsProps) => {
+  const scrollToCategory = (category: string) => {
+    onCategoryChange(category);
+    
+    if (category === 'All Items') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    
+    const categoryId = `category-${category.toLowerCase().replace(/\s+/g, '-').replace(/[()]/g, '')}`;
+    const element = document.getElementById(categoryId);
+    
+    if (element) {
+      const offset = 180; // Account for sticky headers
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <div className="sticky top-0 bg-white border-b border-gray-200 z-40 px-4 py-3">
+    <div className="sticky top-[52px] bg-white border-b border-gray-200 z-40 px-4 py-3">
       <div className="flex gap-2 overflow-x-auto scrollbar-hide">
         {categories.map((category) => (
           <button
             key={category}
-            onClick={() => onCategoryChange(category)}
+            onClick={() => scrollToCategory(category)}
             className={`
               px-6 py-2 rounded-full font-medium text-sm whitespace-nowrap transition-all
               ${selectedCategory === category

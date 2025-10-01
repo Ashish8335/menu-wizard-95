@@ -19,7 +19,7 @@ const Restaurant = () => {
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
       />
-      <MenuSection selectedCategory={selectedCategory} searchQuery={searchQuery} />
+      <MenuSection searchQuery={searchQuery} />
       <CartBottomSheet />
       <RestaurantFooter />
     </div>
