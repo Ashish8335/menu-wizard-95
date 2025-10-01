@@ -58,8 +58,8 @@ const RestaurantHeader = () => {
             <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
             <div className="text-sm">
               <p className="font-medium text-gray-900">Phone</p>
-              <a href="tel:+1234567890" className="text-gray-600 hover:text-primary">
-                (123) 456-7890
+              <a href="tel:+14087552125" className="text-gray-600 hover:text-primary">
+                (408) 755-2125
               </a>
             </div>
           </div>
@@ -68,8 +68,8 @@ const RestaurantHeader = () => {
             <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
             <div className="text-sm">
               <p className="font-medium text-gray-900">Email</p>
-              <a href="mailto:info@everestcuisine.com" className="text-gray-600 hover:text-primary">
-                info@everestcuisine.com
+              <a href="mailto:info@neweverestcuisine.com" className="text-gray-600 hover:text-primary">
+                info@neweverestcuisine.com
               </a>
             </div>
           </div>
@@ -79,12 +79,14 @@ const RestaurantHeader = () => {
             <div className="text-sm">
               <p className="font-medium text-gray-900">Location</p>
               <a 
-                href="https://maps.google.com/?q=Everest+Cuisine+Restaurant"
+                href="https://maps.google.com/?q=2092+Concourse+Dr,+Ste+17,+San+Jose,+CA+95131"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-primary"
               >
-                123 Mountain View Rd
+                2092 Concourse Dr, Ste 17
+                <br />
+                San Jose, CA 95131
               </a>
             </div>
           </div>
@@ -93,9 +95,9 @@ const RestaurantHeader = () => {
             <Clock className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
             <div className="text-sm">
               <p className="font-medium text-gray-900">Hours</p>
-              <p className="text-gray-600">Mon-Thu: 11am-10pm</p>
-              <p className="text-gray-600">Fri-Sat: 11am-11pm</p>
-              <p className="text-gray-600">Sun: 12pm-9pm</p>
+              <p className="text-gray-600">Mon-Thu: 11am-9:30pm</p>
+              <p className="text-gray-600">Fri-Sat: 11am-10pm</p>
+              <p className="text-gray-600">Sun: 11am-9:30pm</p>
             </div>
           </div>
         </div>
