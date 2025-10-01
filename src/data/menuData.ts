@@ -10,22 +10,22 @@ export const menuData: MenuItem[] = [
   // DEALS
   {
     id: 'deal1',
-    name: '15% Off 11am to 5pm',
-    description: '15% OFF from 11am to 5pm (On Online Orders Only. Cannot be combined with other offers)',
+    name: '10% Off 5pm to 9pm',
+    description: 'Enjoy 10% OFF from 5 pm to 9pm. (On Online Orders Only) (Will Be Applied Automatically)',
     price: 0,
-    image: '/api/placeholder/400/300',
+    image: 'https://www.fbgcdn.com/pictures/7061d643-791f-404d-9517-07ce4a5f9661_d2.jpg',
     category: 'Deals',
     available: true,
     isPercentageDiscount: true,
-    discountValue: 15,
-    validTime: '11:00 AM - 5:00 PM'
+    discountValue: 10,
+    validTime: '5:00 PM - 9:00 PM'
   },
   {
     id: 'deal2',
     name: 'Buy 1 Get 1 FREE Yellow Daal Tadka',
     description: 'Buy One Get One FREE Yellow Daal Tadka. Offer is valid for online orders only.',
     price: 0,
-    image: '/api/placeholder/400/300',
+    image: 'https://www.fbgcdn.com/pictures/42a1fe11-c85b-4d0d-b980-3b656bfa1583.jpg',
     category: 'Deals',
     available: true,
     isDeal: true,
@@ -34,9 +34,9 @@ export const menuData: MenuItem[] = [
   {
     id: 'deal3',
     name: 'Buy Butter Chicken Get Rice FREE',
-    description: 'Buy One Butter Chicken Get One Rice FREE. One offer valid at a time only.',
+    description: 'Buy One Butter Chicken Get One Rice FREE ******one offer valid at a time only*****',
     price: 0,
-    image: '/api/placeholder/400/300',
+    image: 'https://www.fbgcdn.com/pictures/48778819-e760-404d-b8bc-5cfb493c69fa.jpg',
     category: 'Deals',
     available: true,
     isDeal: true,
@@ -44,10 +44,10 @@ export const menuData: MenuItem[] = [
   },
   {
     id: 'deal4',
-    name: 'Free Delivery on Orders $40+',
+    name: 'Free delivery on Order of $40+',
     description: 'Free delivery on orders of $40 or more. Offer valid for online orders only. Not valid for Catering.',
     price: 0,
-    image: '/api/placeholder/400/300',
+    image: 'https://www.fbgcdn.com/pictures/7854f82d-15a9-44db-a86b-acf6260a430f.jpg',
     category: 'Deals',
     available: true,
     isDeal: true,
