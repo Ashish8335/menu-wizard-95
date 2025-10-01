@@ -3,15 +3,26 @@ import MenuItemCard from './MenuItemCard';
 
 interface MenuSectionProps {
   selectedCategory: string;
+  searchQuery: string;
 }
 
-const MenuSection = ({ selectedCategory }: MenuSectionProps) => {
-  const filteredItems = selectedCategory === 'All Items'
+const MenuSection = ({ selectedCategory, searchQuery }: MenuSectionProps) => {
+  // Filter by category
+  let filteredItems = selectedCategory === 'All Items'
     ? menuData
     : menuData.filter(item => item.category === selectedCategory);
 
+  // Filter by search query (name or description/ingredients)
+  if (searchQuery.trim()) {
+    const query = searchQuery.toLowerCase();
+    filteredItems = filteredItems.filter(item => 
+      item.name.toLowerCase().includes(query) || 
+      item.description.toLowerCase().includes(query)
+    );
+  }
+
   const groupedItems = selectedCategory === 'All Items'
-    ? menuData.reduce((acc, item) => {
+    ? filteredItems.reduce((acc, item) => {
         if (!acc[item.category]) {
           acc[item.category] = [];
         }
