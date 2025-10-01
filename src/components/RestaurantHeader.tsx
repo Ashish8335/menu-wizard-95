@@ -1,4 +1,4 @@
-import { Star, Clock, MapPin } from 'lucide-react';
+import { Star, Clock, MapPin, Phone, Mail } from 'lucide-react';
 import restaurantHero from '@/assets/restaurant-hero.jpg';
 
 const RestaurantHeader = () => {
@@ -50,6 +50,54 @@ const RestaurantHeader = () => {
           <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-medium">
             Authentic Indian
           </span>
+        </div>
+
+        {/* Contact Details */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-4 border-t">
+          <div className="flex items-start gap-2">
+            <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+            <div className="text-sm">
+              <p className="font-medium text-gray-900">Phone</p>
+              <a href="tel:+1234567890" className="text-gray-600 hover:text-primary">
+                (123) 456-7890
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-2">
+            <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+            <div className="text-sm">
+              <p className="font-medium text-gray-900">Email</p>
+              <a href="mailto:info@everestcuisine.com" className="text-gray-600 hover:text-primary">
+                info@everestcuisine.com
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-2">
+            <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+            <div className="text-sm">
+              <p className="font-medium text-gray-900">Location</p>
+              <a 
+                href="https://maps.google.com/?q=Everest+Cuisine+Restaurant"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-primary"
+              >
+                123 Mountain View Rd
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-2">
+            <Clock className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+            <div className="text-sm">
+              <p className="font-medium text-gray-900">Hours</p>
+              <p className="text-gray-600">Mon-Thu: 11am-10pm</p>
+              <p className="text-gray-600">Fri-Sat: 11am-11pm</p>
+              <p className="text-gray-600">Sun: 12pm-9pm</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
