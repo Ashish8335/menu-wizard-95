@@ -18,7 +18,7 @@ const CategoryTabs = ({ selectedCategory, onCategoryChange }: CategoryTabsProps)
     const element = document.getElementById(categoryId);
     
     if (element) {
-      const offset = 180; // Account for sticky headers
+      const offset = 140; // Account for sticky search bar and category tabs
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - offset;
       
@@ -30,7 +30,7 @@ const CategoryTabs = ({ selectedCategory, onCategoryChange }: CategoryTabsProps)
   };
 
   return (
-    <div className="sticky top-[52px] bg-white border-b border-gray-200 z-40 px-4 py-3">
+    <div className="sticky top-[60px] bg-white border-b border-gray-200 z-40 px-4 py-3">
       <div className="flex gap-2 overflow-x-auto scrollbar-hide">
         {categories.map((category) => (
           <button
