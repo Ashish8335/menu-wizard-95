@@ -5,6 +5,7 @@ import restaurantHero from '@/assets/restaurant-hero.jpg';
 
 const RestaurantHeader = () => {
   const navigate = useNavigate();
+  const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=2092+Concourse+Drive,+San+Jose,+CA+95131";
 
   return (
     <div className="relative">
@@ -30,10 +31,15 @@ const RestaurantHeader = () => {
               <Clock className="w-4 h-4" />
               <span>25-40 min</span>
             </div>
-            <div className="flex items-center gap-1">
+            <a 
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 hover:text-brand-accent transition-colors"
+            >
               <MapPin className="w-4 h-4" />
               <span>0.8 miles away</span>
-            </div>
+            </a>
           </div>
         </div>
       </div>

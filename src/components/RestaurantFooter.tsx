@@ -1,7 +1,7 @@
 import { MapPin, Phone, Clock, Mail, CreditCard, Truck } from 'lucide-react';
 
 const RestaurantFooter = () => {
-  const googleMapsUrl = "https://maps.google.com/?q=2092+Concourse+Dr,+Ste+17,+San+Jose,+CA+95131";
+  const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=2092+Concourse+Drive,+San+Jose,+CA+95131";
 
   return (
     <footer className="bg-muted/30 border-t mt-8">

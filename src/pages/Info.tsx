@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 
 const Info = () => {
   const navigate = useNavigate();
-  const googleMapsUrl = "https://maps.google.com/?q=2092+Concourse+Drive,+San+Jose,+CA+95131";
+  const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=2092+Concourse+Drive,+San+Jose,+CA+95131";
 
   return (
     <div className="min-h-screen bg-background">
