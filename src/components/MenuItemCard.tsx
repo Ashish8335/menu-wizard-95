@@ -15,7 +15,7 @@ const MenuItemCard = ({ item }: MenuItemCardProps) => {
   const cartItem = items.find(cartItem => cartItem.id === item.id);
   const quantity = cartItem?.quantity || 0;
   const isDeal = item.category === 'Deals';
-  const isAutomaticDeal = item.id === 'deal1'; // 10% Off 5pm to 9pm - applied automatically
+  const isAutomaticDeal = item.id === 'deal1' || item.id === 'deal4'; // Automatic deals: 10% off & free delivery
 
   const handleAddToCart = () => {
     if (isDeal && quantity > 0) {
