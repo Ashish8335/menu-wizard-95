@@ -2,6 +2,7 @@ import { Plus, Minus } from 'lucide-react';
 import { MenuItem } from '@/types/menu';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 interface MenuItemCardProps {
   item: MenuItem;
@@ -9,11 +10,21 @@ interface MenuItemCardProps {
 
 const MenuItemCard = ({ item }: MenuItemCardProps) => {
   const { items, addToCart, updateQuantity } = useCart();
+  const { toast } = useToast();
   
   const cartItem = items.find(cartItem => cartItem.id === item.id);
   const quantity = cartItem?.quantity || 0;
+  const isDeal = item.category === 'Deals';
 
   const handleAddToCart = () => {
+    if (isDeal && quantity > 0) {
+      toast({
+        title: "Deal Already Added",
+        description: "This deal is already in your cart. Each deal can only be added once.",
+        variant: "destructive",
+      });
+      return;
+    }
     addToCart(item);
   };
 
@@ -50,9 +61,12 @@ const MenuItemCard = ({ item }: MenuItemCardProps) => {
             {item.description}
           </p>
           <div className="flex items-center justify-between">
-            <span className="font-bold text-lg text-gray-900">
-              ${item.price.toFixed(2)}
-            </span>
+            {!isDeal && (
+              <span className="font-bold text-lg text-gray-900">
+                ${item.price.toFixed(2)}
+              </span>
+            )}
+            {isDeal && <div />}
             
             {/* Add to Cart Controls */}
             {quantity === 0 ? (
@@ -64,6 +78,20 @@ const MenuItemCard = ({ item }: MenuItemCardProps) => {
                 <Plus className="w-4 h-4 mr-1" />
                 Add
               </Button>
+            ) : isDeal ? (
+              <div className="flex items-center gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={handleDecrement}
+                  className="w-8 h-8 p-0 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white"
+                >
+                  <Minus className="w-3 h-3" />
+                </Button>
+                <span className="font-semibold text-brand-primary min-w-[2rem] text-center">
+                  Added
+                </span>
+              </div>
             ) : (
               <div className="flex items-center gap-2">
                 <Button
