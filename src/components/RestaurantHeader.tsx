@@ -1,7 +1,11 @@
-import { Star, Clock, MapPin, Phone, Mail } from 'lucide-react';
+import { Star, Clock, MapPin, Info } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 import restaurantHero from '@/assets/restaurant-hero.jpg';
 
 const RestaurantHeader = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="relative">
       {/* Hero Image */}
@@ -52,54 +56,16 @@ const RestaurantHeader = () => {
           </span>
         </div>
 
-        {/* Contact Details */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-4 border-t">
-          <div className="flex items-start gap-2">
-            <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-            <div className="text-sm">
-              <p className="font-medium text-gray-900">Phone</p>
-              <a href="tel:+14087552125" className="text-gray-600 hover:text-primary">
-                (408) 755-2125
-              </a>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-2">
-            <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-            <div className="text-sm">
-              <p className="font-medium text-gray-900">Email</p>
-              <a href="mailto:info@neweverestcuisine.com" className="text-gray-600 hover:text-primary">
-                info@neweverestcuisine.com
-              </a>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-2">
-            <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-            <div className="text-sm">
-              <p className="font-medium text-gray-900">Location</p>
-              <a 
-                href="https://maps.google.com/?q=2092+Concourse+Dr,+Ste+17,+San+Jose,+CA+95131"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary"
-              >
-                2092 Concourse Dr, Ste 17
-                <br />
-                San Jose, CA 95131
-              </a>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-2">
-            <Clock className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-            <div className="text-sm">
-              <p className="font-medium text-gray-900">Hours</p>
-              <p className="text-gray-600">Mon-Thu: 11am-9:30pm</p>
-              <p className="text-gray-600">Fri-Sat: 11am-10pm</p>
-              <p className="text-gray-600">Sun: 11am-9:30pm</p>
-            </div>
-          </div>
+        {/* Info Button */}
+        <div className="mt-4">
+          <Button
+            variant="outline"
+            className="w-full sm:w-auto"
+            onClick={() => navigate('/info')}
+          >
+            <Info className="h-4 w-4 mr-2" />
+            View Full Restaurant Information
+          </Button>
         </div>
       </div>
     </div>
