@@ -15,6 +15,7 @@ const MenuItemCard = ({ item }: MenuItemCardProps) => {
   const cartItem = items.find(cartItem => cartItem.id === item.id);
   const quantity = cartItem?.quantity || 0;
   const isDeal = item.category === 'Deals';
+  const isAutomaticDeal = item.id === 'deal1'; // 10% Off 5pm to 9pm - applied automatically
 
   const handleAddToCart = () => {
     if (isDeal && quantity > 0) {
@@ -69,7 +70,11 @@ const MenuItemCard = ({ item }: MenuItemCardProps) => {
             {isDeal && <div />}
             
             {/* Add to Cart Controls */}
-            {quantity === 0 ? (
+            {isAutomaticDeal ? (
+              <div className="px-4 py-2 bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-200 rounded-full text-xs font-medium">
+                Applied Automatically
+              </div>
+            ) : quantity === 0 ? (
               <Button
                 onClick={handleAddToCart}
                 size="sm"
