@@ -20,9 +20,10 @@ const MenuItemCard = ({ item }: MenuItemCardProps) => {
   const isDeal = item.category === 'Deals';
   const isAutomaticDeal = item.id === 'deal1' || item.id === 'deal4'; // Automatic deals: 10% off & free delivery
   const isDalTadkaDeal = item.id === 'deal2'; // Buy 1 get 1 free Yellow Dal Tadka
+  const isButterChickenDeal = item.id === 'deal3'; // Buy Butter Chicken Get Rice Free
 
   const handleAddToCart = () => {
-    if (isDalTadkaDeal) {
+    if (isDalTadkaDeal || isButterChickenDeal) {
       setShowCustomization(true);
       return;
     }
@@ -39,23 +40,41 @@ const MenuItemCard = ({ item }: MenuItemCardProps) => {
   };
 
   const handleCustomizationConfirm = (customization: ItemCustomization, customizationPrice: number) => {
-    // When deal2 is clicked, add the actual Yellow Dal Tadka dish (id: '93')
-    const yellowDalTadka = {
-      id: '93',
-      name: 'Yellow Dal Tadka (Vegan)',
-      description: 'Yellow lentils cooked with fresh tomato, onion, cumin and cilantro.',
-      price: 15.99,
-      image: 'https://www.fbgcdn.com/pictures/82120695-630b-4468-b9e8-0a0ad440719c_d3.jpg',
-      category: 'Vegetarian',
-      available: true
-    };
+    let dish;
+    let dishName;
     
-    addToCart(yellowDalTadka, customization, customizationPrice);
-    setShowCustomization(false);
-    toast({
-      title: "Added to Cart",
-      description: "Yellow Dal Tadka with customizations added successfully!",
-    });
+    if (isDalTadkaDeal) {
+      dish = {
+        id: '93',
+        name: 'Yellow Dal Tadka (Vegan)',
+        description: 'Yellow lentils cooked with fresh tomato, onion, cumin and cilantro.',
+        price: 15.99,
+        image: 'https://www.fbgcdn.com/pictures/82120695-630b-4468-b9e8-0a0ad440719c_d3.jpg',
+        category: 'Vegetarian',
+        available: true
+      };
+      dishName = 'Yellow Dal Tadka';
+    } else if (isButterChickenDeal) {
+      dish = {
+        id: '49',
+        name: 'Butter Chicken - Chef\'s Special',
+        description: 'Chef\'s special. Butter chicken is one of the most popular curries and we have one of the best in the world! Sliced thigh chicken meat with creamy, buttery sauce.',
+        price: 16.99,
+        image: 'https://www.fbgcdn.com/pictures/a29d7903-29d6-4124-8efd-c1dde9f8e185_d3.jpg',
+        category: 'Chicken',
+        available: true
+      };
+      dishName = 'Butter Chicken';
+    }
+    
+    if (dish) {
+      addToCart(dish, customization, customizationPrice);
+      setShowCustomization(false);
+      toast({
+        title: "Added to Cart",
+        description: `${dishName} with customizations added successfully!`,
+      });
+    }
   };
 
   const handleIncrement = () => {
@@ -66,13 +85,30 @@ const MenuItemCard = ({ item }: MenuItemCardProps) => {
     updateQuantity(item.id, quantity - 1);
   };
 
+  const getDishInfo = () => {
+    if (isDalTadkaDeal) {
+      return {
+        name: 'Yellow Dal Tadka (Vegan)',
+        description: 'Yellow lentils cooked with fresh tomato, onion, cumin and cilantro.'
+      };
+    } else if (isButterChickenDeal) {
+      return {
+        name: 'Butter Chicken - Chef\'s Special',
+        description: 'Chef\'s special. Butter chicken is one of the most popular curries and we have one of the best in the world! Sliced thigh chicken meat with creamy, buttery sauce.'
+      };
+    }
+    return { name: '', description: '' };
+  };
+
+  const dishInfo = getDishInfo();
+
   return (
     <>
       <DishCustomizationDialog
         open={showCustomization}
         onOpenChange={setShowCustomization}
-        dishName="Yellow Dal Tadka (Vegan)"
-        dishDescription="Yellow lentils cooked with fresh tomato, onion, cumin and cilantro."
+        dishName={dishInfo.name}
+        dishDescription={dishInfo.description}
         onConfirm={handleCustomizationConfirm}
       />
       
