@@ -15,8 +15,17 @@ export interface MenuItem {
   minimumOrder?: number;
 }
 
+export interface ItemCustomization {
+  spiceLevel?: string;
+  sideDish?: { name: string; price: number };
+  extraSauces?: { name: string; price: number }[];
+  specialInstructions?: string;
+}
+
 export interface CartItem extends MenuItem {
   quantity: number;
+  customization?: ItemCustomization;
+  customizationPrice?: number;
 }
 
 export interface Order {

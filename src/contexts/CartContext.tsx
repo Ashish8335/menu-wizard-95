@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { CartItem, MenuItem } from '@/types/menu';
+import { CartItem, MenuItem, ItemCustomization } from '@/types/menu';
 
 interface CartContextType {
   items: CartItem[];
-  addToCart: (item: MenuItem) => void;
+  addToCart: (item: MenuItem, customization?: ItemCustomization, customizationPrice?: number) => void;
   removeFromCart: (itemId: string) => void;
   updateQuantity: (itemId: string, quantity: number) => void;
   clearCart: () => void;
@@ -28,13 +28,23 @@ interface CartProviderProps {
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  const addToCart = (item: MenuItem) => {
+  const addToCart = (item: MenuItem, customization?: ItemCustomization, customizationPrice?: number) => {
     setItems(prev => {
-      const existingItem = prev.find(cartItem => cartItem.id === item.id);
+      // For customized items, always add as new item
+      if (customization) {
+        return [...prev, { 
+          ...item, 
+          quantity: 1,
+          customization,
+          customizationPrice: customizationPrice || 0
+        }];
+      }
+      
+      const existingItem = prev.find(cartItem => cartItem.id === item.id && !cartItem.customization);
       
       if (existingItem) {
         return prev.map(cartItem =>
-          cartItem.id === item.id
+          cartItem.id === item.id && !cartItem.customization
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
@@ -66,7 +76,10 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   };
 
   const getCartTotal = () => {
-    return items.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return items.reduce((total, item) => {
+      const itemPrice = item.price + (item.customizationPrice || 0);
+      return total + (itemPrice * item.quantity);
+    }, 0);
   };
 
   const getCartItemsCount = () => {

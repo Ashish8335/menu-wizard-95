@@ -190,44 +190,68 @@ const Checkout = () => {
         <div className="bg-white rounded-xl p-6 shadow-sm">
           <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
           <div className="space-y-3 mb-4">
-            {items.map((item) => (
-              <div key={item.id} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                <div className="flex-1">
-                  <span className="font-medium">{item.name}</span>
-                  <div className="text-sm text-gray-600">${item.price.toFixed(2)} each</div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="h-8 w-8 p-0"
-                    >
-                      <Minus className="w-3 h-3" />
-                    </Button>
-                    <span className="w-8 text-center font-medium">{item.quantity}</span>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="h-8 w-8 p-0"
-                    >
-                      <Plus className="w-3 h-3" />
-                    </Button>
+            {items.map((item, index) => {
+              const itemTotal = (item.price + (item.customizationPrice || 0)) * item.quantity;
+              return (
+                <div key={`${item.id}-${index}`} className="flex justify-between items-start p-3 bg-gray-50 rounded-lg">
+                  <div className="flex-1">
+                    <span className="font-medium">{item.name}</span>
+                    <div className="text-sm text-gray-600">
+                      ${item.price.toFixed(2)} each
+                      {item.customizationPrice && item.customizationPrice > 0 && (
+                        <span> + ${item.customizationPrice.toFixed(2)} customization</span>
+                      )}
+                    </div>
+                    {item.customization && (
+                      <div className="mt-2 text-xs text-gray-600 space-y-1">
+                        {item.customization.spiceLevel && (
+                          <div>🌶️ Spice: {item.customization.spiceLevel}</div>
+                        )}
+                        {item.customization.sideDish && (
+                          <div>🍚 Side: {item.customization.sideDish.name}</div>
+                        )}
+                        {item.customization.extraSauces && item.customization.extraSauces.length > 0 && (
+                          <div>🥫 Sauces: {item.customization.extraSauces.map(s => s.name).join(', ')}</div>
+                        )}
+                        {item.customization.specialInstructions && (
+                          <div>📝 Note: {item.customization.specialInstructions}</div>
+                        )}
+                      </div>
+                    )}
                   </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => removeFromCart(item.id)}
-                    className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </Button>
-                  <span className="font-medium w-16 text-right">${(item.price * item.quantity).toFixed(2)}</span>
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                        className="h-8 w-8 p-0"
+                      >
+                        <Minus className="w-3 h-3" />
+                      </Button>
+                      <span className="w-8 text-center font-medium">{item.quantity}</span>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        className="h-8 w-8 p-0"
+                      >
+                        <Plus className="w-3 h-3" />
+                      </Button>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => removeFromCart(item.id)}
+                      className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
+                    <span className="font-medium w-16 text-right">${itemTotal.toFixed(2)}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           
           <div className="border-t border-gray-200 pt-4 space-y-2">
