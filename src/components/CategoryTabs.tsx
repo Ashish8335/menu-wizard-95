@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { categories } from '@/data/menuData';
 
 interface CategoryTabsProps {
@@ -6,6 +7,19 @@ interface CategoryTabsProps {
 }
 
 const CategoryTabs = ({ selectedCategory, onCategoryChange }: CategoryTabsProps) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollLeft = 0;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToCategory = (category: string) => {
     onCategoryChange(category);
     
@@ -31,7 +45,7 @@ const CategoryTabs = ({ selectedCategory, onCategoryChange }: CategoryTabsProps)
 
   return (
     <div className="sticky top-[60px] bg-white border-b border-gray-200 z-40 px-4 py-3">
-      <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+      <div ref={scrollContainerRef} className="flex gap-2 overflow-x-auto scrollbar-hide">
         {categories.map((category) => (
           <button
             key={category}
